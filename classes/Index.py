@@ -24,6 +24,7 @@ def index_for(X: list, Z: list):
         stride[l] = step
         step *= card[l]
 
+    # index
     assignment = np.zeros(k_number_of_variables, dtype=int)
     index_X4Z = np.zeros(k_number_of_assignments, dtype=int)
     j = 0

@@ -17,8 +17,6 @@ class TestIndexFor(TestCase):
         self.A = Variable(1, "A", ['a1', 'a2', 'a3'])
         self.B = Variable(2, "B", ['b1', 'b2'])
         self.C = Variable(3, "C", ['c1', 'b2'])
-        # D.index = 1
-        self.D = Variable(1, "D", ['d1', 'd2'])
 
         self.X = [ self.B, self.A]
         self.Y = [ self.C, self.B]

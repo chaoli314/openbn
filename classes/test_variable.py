@@ -68,12 +68,12 @@ class TestVariable(TestCase):
         assert hash(self.A) == hash(self.D)
 
     def test_get_value(self):
-        assert "a1" == self.A.get_value(0)
-        assert "a2" == self.A.get_value(1)
-        assert "a3" == self.A.get_value(2)
+        assert "a1" == self.A.get_value_name(0)
+        assert "a2" == self.A.get_value_name(1)
+        assert "a3" == self.A.get_value_name(2)
 
-        assert "b1" == self.B.get_value(0)
-        assert "b2" == self.B.get_value(1)
+        assert "b1" == self.B.get_value_name(0)
+        assert "b2" == self.B.get_value_name(1)
 
     def test_get_value_index(self):
         assert 0 == self.B.get_value_index("b1")

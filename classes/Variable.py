@@ -33,7 +33,7 @@ class Variable(object):
     def values(self):
         return self._values
 
-    def get_value(self, index):
+    def get_value_name(self, index):
         return self.values[index]
 
     def get_value_index(self, value):
