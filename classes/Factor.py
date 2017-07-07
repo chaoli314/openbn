@@ -52,7 +52,7 @@ class Factor(object):
         j = index_for(phi1.scope, psi_scope)
         k = index_for(phi2.scope, psi_scope)
         # multiply
-        np.multiply(phi1._parameters[j], phi2._parameters[k], psi_parameters)
+        np.multiply(phi1._parameters[j], phi2._parameters[k], out=psi_parameters)
         return Factor(psi_scope, psi_parameters)
 
     def reordered_variables(self, new_order: list):
@@ -65,3 +65,15 @@ class Factor(object):
         reordered_other = other.reordered_variables(sorted(other.scope))
         return reordered_self.scope == reordered_other.scope and np.allclose(reordered_self._parameters,
                                                                              reordered_other._parameters)
+
+    def __truediv__(self, other):
+        phi1 = self
+        phi2 = other
+        psi_scope = sorted(phi1.scope)
+        psi_parameters = np.zeros_like(phi1._parameters)  # Pre-allocate memory
+        # index
+        j = index_for(phi1.scope, psi_scope)
+        k = index_for(phi2.scope, psi_scope)
+        # true divide
+        np.true_divide(phi1._parameters[j], phi2._parameters[k], out=psi_parameters, where=phi2._parameters[k] != 0)
+        return Factor(psi_scope, psi_parameters)
